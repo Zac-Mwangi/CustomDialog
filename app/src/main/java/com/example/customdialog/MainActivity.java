@@ -2,7 +2,6 @@ package com.example.customdialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +17,9 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewUsername =  findViewById(R.id.textview_username);
-        textViewPassword =  findViewById(R.id.textview_password);
-        button = findViewById(R.id.button);
+        textViewUsername = (TextView) findViewById(R.id.textview_username);
+        textViewPassword = (TextView) findViewById(R.id.textview_password);
+        button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,12 +29,8 @@ public class MainActivity extends AppCompatActivity implements ExampleDialog.Exa
     }
 
     public void openDialog() {
-        Intent intent = new Intent(MainActivity.this, ExampleDialog.class); //shift+f6 to rename
-        intent.putExtra("name", "zack");
-        intent.putExtra("password", "123");
-        startActivityForResult(intent, 2);
-//        ExampleDialog exampleDialog = new ExampleDialog();
-//        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
     @Override
